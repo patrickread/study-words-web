@@ -1,0 +1,27 @@
+{
+  "name": "study-words-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-sentences.mjs",
+    "predev": "node scripts/generate-sentences.mjs",
+    "prebuild": "node scripts/generate-sentences.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "publish:pages": "node scripts/publish-pages.mjs",
+    "preview": "vite preview",
+    "test": "node --test src/game.test.ts scripts/sentences.test.mjs"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "openai": "^4.104.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}

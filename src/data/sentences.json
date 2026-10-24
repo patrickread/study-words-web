@@ -1,0 +1,385 @@
+{
+  "generatedAt": "2026-10-24T14:17:49.438Z",
+  "model": "gpt-4o-mini",
+  "lists": {
+    "addie-d1": {
+      "absence": [
+        "Her absence made me feel a little sad.",
+        "The puppy waited for him in his absence.",
+        "In her absence, I helped with the chores."
+      ],
+      "activity": [
+        "We can choose an activity for today.",
+        "My favorite activity is painting with friends.",
+        "Let's plan a fun activity for the weekend."
+      ],
+      "alligator": [
+        "The alligator swims in the pond.",
+        "Look at the alligator by the tree.",
+        "We saw an alligator at the zoo."
+      ],
+      "attitude": [
+        "She had a happy attitude at the party.",
+        "His positive attitude made everyone smile.",
+        "We can change our attitude to feel better."
+      ],
+      "bandage": [
+        "I need a bandage for my cut.",
+        "She put a bandage on her knee.",
+        "He helped me find a bandage."
+      ],
+      "began": [
+        "She began to sing a happy song.",
+        "The puppy began to play with its toy.",
+        "He began drawing a big, bright sun."
+      ],
+      "camper": [
+        "The camper is parked by the lake.",
+        "I saw a blue camper on the road.",
+        "My friend has a small camper for camping."
+      ],
+      "dwell": [
+        "Birds dwell in tall trees.",
+        "We dwell in a cozy house.",
+        "Fish dwell in the pond."
+      ],
+      "edit": [
+        "I will edit my drawing with bright colors.",
+        "Can you help me edit my story?",
+        "Let's edit the pictures in our album."
+      ],
+      "eggplant": [
+        "I like to eat eggplant in my dinner.",
+        "Mom bought an eggplant at the market today.",
+        "We will cook eggplant with pasta this evening."
+      ],
+      "elephant": [
+        "The elephant splashed water with its trunk.",
+        "I saw an elephant at the zoo.",
+        "The elephant loves to eat tasty fruits."
+      ],
+      "enter": [
+        "Please enter the room quietly.",
+        "You can enter the playground now.",
+        "I will enter my name in the game."
+      ],
+      "except": [
+        "I like all fruits except bananas.",
+        "Everyone can play outside except Tim.",
+        "She has all the crayons except red."
+      ],
+      "festive": [
+        "The room looked festive with bright balloons.",
+        "We wore festive hats at the party.",
+        "Her dress was festive and full of color."
+      ],
+      "meant": [
+        "I meant to share my toy today.",
+        "The story meant a lot to me.",
+        "She meant to finish her drawing after lunch."
+      ],
+      "measure": [
+        "We will measure the water for the plants.",
+        "Can you help me measure the dog?",
+        "Let's measure the box to find its size."
+      ],
+      "nonsense": [
+        "That story is just nonsense.",
+        "I heard nonsense from my friend today.",
+        "Don't listen to that nonsense, let's play instead."
+      ],
+      "package": [
+        "I got a package in the mail today.",
+        "The package is for my friend’s birthday.",
+        "Can you help me open the package?"
+      ],
+      "ramp": [
+        "The dog ran up the ramp.",
+        "We saw a ramp at the playground.",
+        "The toy car raced down the ramp."
+      ],
+      "rapid": [
+        "The rabbit ran in a rapid way.",
+        "She made a rapid decision to play.",
+        "The river flows with rapid water today."
+      ],
+      "scrap": [
+        "I found a scrap of paper on the floor.",
+        "She made a beautiful card from a scrap.",
+        "The dog played with a scrap of cloth."
+      ],
+      "shelf": [
+        "The book is on the shelf.",
+        "I put my toys on the shelf.",
+        "Mom likes the shelf in the kitchen."
+      ],
+      "special": [
+        "Today is a special day for us.",
+        "My special toy is very colorful.",
+        "We made a special card for Mom."
+      ],
+      "spend": [
+        "I will spend my allowance on candy.",
+        "We spend time playing games after school.",
+        "She likes to spend weekends at the park."
+      ],
+      "taxes": [
+        "I help my dad with his taxes.",
+        "Mom pays taxes every year.",
+        "We learn about taxes in school."
+      ]
+    },
+    "sight": {
+      "all": [
+        "All the kids are playing outside.",
+        "I want to eat all the cookies.",
+        "We can share all our toys."
+      ],
+      "am": [
+        "I am happy to see you.",
+        "I am going to play outside.",
+        "I am eating my favorite snack."
+      ],
+      "and": [
+        "The cat and dog play together.",
+        "I want ice cream and cake.",
+        "She reads books and draws pictures."
+      ],
+      "are": [
+        "The birds are singing in the tree.",
+        "My friends are playing at the park.",
+        "The toys are all on the floor."
+      ],
+      "at": [
+        "I am at the park today.",
+        "She is waiting at the bus stop.",
+        "Look at the colorful balloons!"
+      ],
+      "can": [
+        "I can jump very high.",
+        "You can help me with my puzzle.",
+        "She can sing a happy song."
+      ],
+      "come": [
+        "Come play with me in the park.",
+        "Can you come to my birthday party?",
+        "Let’s come inside when it starts to rain."
+      ],
+      "did": [
+        "Did you see the big dog?",
+        "I did my homework today.",
+        "Did we eat lunch yet?"
+      ],
+      "do": [
+        "Do you want to play outside?",
+        "What do you like to eat?",
+        "I do my homework after school."
+      ],
+      "down": [
+        "Down the slide, we all laughed.",
+        "The cat jumped down from the tree.",
+        "Please put your toys down on the mat."
+      ],
+      "for": [
+        "I made a card for my friend.",
+        "We go to the park for fun.",
+        "She saved a cookie for later."
+      ],
+      "get": [
+        "I will get a cookie.",
+        "Can you get my toy?",
+        "Let's get some ice cream."
+      ],
+      "go": [
+        "I will go to the park today.",
+        "Let's go play soccer after lunch.",
+        "Can we go to the zoo tomorrow?"
+      ],
+      "got": [
+        "I got a new toy today.",
+        "She got a big surprise party.",
+        "We got ice cream after lunch."
+      ],
+      "had": [
+        "I had a big red balloon.",
+        "She had a yummy ice cream cone.",
+        "They had fun playing in the park."
+      ],
+      "has": [
+        "The cat has a fluffy tail.",
+        "My friend has a big smile.",
+        "The dog has a new toy."
+      ],
+      "have": [
+        "I have a big red ball.",
+        "Do you have a pet cat?",
+        "We have fun at the park."
+      ],
+      "he": [
+        "He is playing with his dog.",
+        "He likes to read books.",
+        "He eats an apple for lunch."
+      ],
+      "here": [
+        "I found my toy car here.",
+        "Can you see the bird here?",
+        "Let's sit here and read a book."
+      ],
+      "him": [
+        "I saw him at the park.",
+        "Can you help him with his toy?",
+        "She gave him a big hug."
+      ],
+      "his": [
+        "His dog loves to play fetch.",
+        "He put on his favorite hat.",
+        "His lunch is in the blue bag."
+      ],
+      "in": [
+        "The cat is in the hat.",
+        "I found my toy in the box.",
+        "We will play in the park."
+      ],
+      "is": [
+        "The sky is blue today.",
+        "My dog is very friendly.",
+        "This book is my favorite."
+      ],
+      "it": [
+        "It is sunny outside today.",
+        "I found it under the bed.",
+        "Can you see it over there?"
+      ],
+      "like": [
+        "I like to play outside with friends.",
+        "Do you like ice cream and cake?",
+        "My dog is fluffy, and I like him."
+      ],
+      "look": [
+        "Look at the pretty butterfly in the garden.",
+        "I will look for my lost toy.",
+        "Can you look at this picture I drew?"
+      ],
+      "me": [
+        "Me and my dog love to play.",
+        "Can you help me find my toy?",
+        "Please give me a hug, Mom."
+      ],
+      "my": [
+        "My dog likes to play fetch.",
+        "I found my red ball outside.",
+        "My mom makes the best cookies."
+      ],
+      "of": [
+        "We made a pile of leaves.",
+        "I have a box of crayons.",
+        "She is part of the team."
+      ],
+      "on": [
+        "The cat is sitting on the mat.",
+        "I put my book on the table.",
+        "We can play on the grass."
+      ],
+      "play": [
+        "I love to play outside with my friends.",
+        "Can we play a game after lunch?",
+        "Let's play with the new toy together."
+      ],
+      "said": [
+        "She said hello to her friend.",
+        "He said it was a sunny day.",
+        "Mom said we can go to the park."
+      ],
+      "saw": [
+        "I saw a big red balloon.",
+        "She saw a cat in the yard.",
+        "We saw butterflies in the garden."
+      ],
+      "see": [
+        "I see a big red balloon.",
+        "Do you see the cute puppy?",
+        "We can see the stars tonight."
+      ],
+      "she": [
+        "She likes to play with her friends.",
+        "She has a big, red ball.",
+        "She reads a book every night."
+      ],
+      "that": [
+        "That is my favorite toy.",
+        "Look at the bird that is singing.",
+        "I have a book that I like."
+      ],
+      "the": [
+        "The cat is on the mat.",
+        "I see the dog in the park.",
+        "The sun is shining bright today."
+      ],
+      "they": [
+        "They play outside in the warm sun.",
+        "They eat ice cream on a hot day.",
+        "They read books before going to bed."
+      ],
+      "this": [
+        "This is my favorite toy.",
+        "Look at this beautiful flower.",
+        "Can you help me with this puzzle?"
+      ],
+      "to": [
+        "I want to play outside today.",
+        "Please give the book to me.",
+        "Let's go to the park together."
+      ],
+      "up": [
+        "I will climb up the big hill.",
+        "Please pick up your toys now.",
+        "The balloon went up into the sky."
+      ],
+      "was": [
+        "The cat was very fluffy and soft.",
+        "It was a sunny day outside.",
+        "My favorite toy was lost yesterday."
+      ],
+      "we": [
+        "We will play outside after lunch.",
+        "We like to read fun stories together.",
+        "We can draw pictures of our pets."
+      ],
+      "went": [
+        "I went to the park with my dog.",
+        "She went to the store for some milk.",
+        "We went on a fun trip to the zoo."
+      ],
+      "what": [
+        "What is your favorite color?",
+        "What do you want to eat?",
+        "What game do you want to play?"
+      ],
+      "when": [
+        "When I wake up, I eat breakfast.",
+        "I smile when I see my friend.",
+        "When it rains, we play inside."
+      ],
+      "where": [
+        "Where is my favorite toy?",
+        "Do you know where we are going?",
+        "Where did you put my book?"
+      ],
+      "will": [
+        "I will go to the park today.",
+        "She will help me with my homework.",
+        "They will play soccer after school."
+      ],
+      "with": [
+        "I play with my puppy every day.",
+        "She reads a book with her mom.",
+        "We go to the park with our friends."
+      ],
+      "you": [
+        "You can play outside today.",
+        "Will you help me with my game?",
+        "I like the book you gave me."
+      ]
+    }
+  }
+}
