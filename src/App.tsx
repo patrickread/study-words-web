@@ -11,18 +11,10 @@ import {
   splitSentence,
   startRound,
   submit,
-  normalizeDictation,
   type Feedback,
   type Game,
 } from "./game";
-import {
-  dictationAvailable,
-  dictationErrorMessage,
-  speak,
-  speechAvailable,
-  startDictation,
-  stopSpeaking,
-} from "./speech";
+import { speak, speechAvailable, stopSpeaking } from "./speech";
 
 type Phase = "welcome" | "lists" | "answer" | "feedback" | "done";
 
@@ -35,8 +27,6 @@ export function App() {
   const [draft, setDraft] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState("");
-  const [micError, setMicError] = useState<string | null>(null);
-  const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
 
   const phaseRef = useRef<Phase>("welcome");
@@ -44,12 +34,9 @@ export function App() {
   const turnRef = useRef(0);
   const busyRef = useRef(false);
   const sayId = useRef(0);
-  const recRef = useRef<{ stop: () => void } | null>(null);
-  const submitRef = useRef<(raw: string, via: "wrote" | "said") => Promise<void>>(async () => {});
   const wordInput = useRef<HTMLInputElement>(null);
 
   const canSpeak = speechAvailable();
-  const canDictate = dictationAvailable();
 
   function showPhase(next: Phase) {
     phaseRef.current = next;
@@ -59,12 +46,6 @@ export function App() {
   function updateGame(next: Game) {
     gameRef.current = next;
     setGame(next);
-  }
-
-  function stopMic() {
-    recRef.current?.stop();
-    recRef.current = null;
-    setListening(false);
   }
 
   async function say(text: string) {
@@ -81,8 +62,6 @@ export function App() {
     setFeedback(null);
     setFeedbackMessage("");
     setDraft("");
-    setMicError(null);
-    stopMic();
     busyRef.current = false;
 
     if (roundGame.finished || !roundGame.round) {
@@ -96,11 +75,11 @@ export function App() {
     if (turnRef.current !== mine) return;
   }
 
-  async function onSubmit(raw: string, via: "wrote" | "said") {
+  async function onSubmit(raw: string) {
     const current = gameRef.current;
     if (!current?.round || phaseRef.current !== "answer" || busyRef.current) return;
 
-    const kind = classifyAttempt(via === "said" ? normalizeDictation(raw) : raw);
+    const kind = classifyAttempt(raw);
     if (kind === "empty") return;
     if (kind === "replay") {
       setDraft("");
@@ -108,14 +87,13 @@ export function App() {
       return;
     }
 
-    const attempt = via === "said" ? normalizeDictation(raw) : raw.trim();
+    const attempt = raw.trim();
     const mine = ++turnRef.current;
     busyRef.current = true;
-    stopMic();
 
     const affirmation = randomAffirmation();
-    const result = submit(current, attempt, affirmation, via);
-    const message = resultLine(current.name, result.feedback, via);
+    const result = submit(current, attempt, affirmation, "wrote");
+    const message = resultLine(current.name, result.feedback, "wrote");
     updateGame(result.game);
     setFeedback(result.feedback);
     setFeedbackMessage(message);
@@ -148,8 +126,6 @@ export function App() {
     await playRound(result.game);
   }
 
-  submitRef.current = onSubmit;
-
   useEffect(() => {
     if (phase === "answer") wordInput.current?.focus();
   }, [phase, game?.round?.word, game?.correct.length, game?.failures]);
@@ -157,7 +133,6 @@ export function App() {
   useEffect(() => {
     return () => {
       stopSpeaking();
-      recRef.current?.stop();
     };
   }, []);
 
@@ -184,45 +159,7 @@ export function App() {
   function onHear() {
     const current = gameRef.current;
     if (!current?.round || phaseRef.current !== "answer") return;
-    stopMic();
     void say(promptLine(current.name, current.round.word, current.round.sentence));
-  }
-
-  function onMic() {
-    if (phaseRef.current !== "answer" || busyRef.current) return;
-    if (recRef.current) {
-      stopMic();
-      return;
-    }
-
-    stopSpeaking();
-    setMicError(null);
-    const holder: { current: { stop: () => void } | null } = { current: null };
-    const session = startDictation({
-      onTranscript: (text, isFinal) => {
-        const normalized = normalizeDictation(text);
-        setDraft(normalized);
-        if (isFinal && normalized) void submitRef.current(normalized, "said");
-      },
-      onError: (error) => {
-        setMicError(dictationErrorMessage(error));
-        setListening(false);
-      },
-      onEnd: () => {
-        if (recRef.current !== holder.current) return;
-        recRef.current = null;
-        setListening(false);
-      },
-    });
-    holder.current = session;
-
-    if (!session) {
-      setMicError("This browser can't take dictation. Type the word instead.");
-      return;
-    }
-
-    recRef.current = session;
-    setListening(true);
   }
 
   function onNext() {
@@ -232,13 +169,11 @@ export function App() {
 
   function onNotMe() {
     stopSpeaking();
-    stopMic();
     showPhase("welcome");
   }
 
   function onPlayAgain() {
     stopSpeaking();
-    stopMic();
     busyRef.current = false;
     turnRef.current += 1;
     setFeedback(null);
@@ -271,15 +206,11 @@ export function App() {
           draft={draft}
           feedback={feedback}
           feedbackMessage={feedbackMessage}
-          listening={listening}
           speaking={speaking}
-          canDictate={canDictate}
-          micError={micError}
           wordInput={wordInput}
           onDraft={setDraft}
-          onSubmit={() => void onSubmit(draft, "wrote")}
+          onSubmit={() => void onSubmit(draft)}
           onHear={onHear}
-          onMic={onMic}
           onNext={onNext}
         />
       ) : null}
@@ -391,15 +322,11 @@ function Play({
   draft,
   feedback,
   feedbackMessage,
-  listening,
   speaking,
-  canDictate,
-  micError,
   wordInput,
   onDraft,
   onSubmit,
   onHear,
-  onMic,
   onNext,
 }: {
   game: Game;
@@ -407,15 +334,11 @@ function Play({
   draft: string;
   feedback: Feedback | null;
   feedbackMessage: string;
-  listening: boolean;
   speaking: boolean;
-  canDictate: boolean;
-  micError: string | null;
   wordInput: RefObject<HTMLInputElement | null>;
   onDraft: (value: string) => void;
   onSubmit: () => void;
   onHear: () => void;
-  onMic: () => void;
   onNext: () => void;
 }) {
   const round = game.round;
@@ -495,31 +418,12 @@ function Play({
               onChange={(event) => onDraft(event.target.value)}
             />
             <div className="actions">
-              {canDictate ? (
-                <button
-                  type="button"
-                  className={listening ? "secondary listening" : "secondary"}
-                  aria-pressed={listening}
-                  onClick={onMic}
-                >
-                  <MicIcon />
-                  {listening ? "Listening…" : "Say the word"}
-                </button>
-              ) : null}
               <button className="primary" type="submit" disabled={draft.trim() === ""}>
                 Check
               </button>
             </div>
           </form>
-          {micError ? (
-            <p className="form-error" role="status">
-              {micError}
-            </p>
-          ) : (
-            <p className="hint">
-              {canDictate ? "Type the spelling, or say the word." : "Type the spelling you hear."} Press ? to hear it again.
-            </p>
-          )}
+          <p className="hint">Type the spelling you hear. Press ? to hear it again.</p>
         </>
       ) : null}
 
@@ -572,20 +476,3 @@ function SpeakerIcon() {
   );
 }
 
-function MicIcon() {
-  return (
-    <svg className="icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"
-      />
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        d="M7 11a5 5 0 0 0 10 0M12 16v3M9 19h6"
-      />
-    </svg>
-  );
-}

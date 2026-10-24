@@ -1,6 +1,6 @@
 # Spelling quiz
 
-The computer says a word and a short example sentence. You spell the word by typing, or say it with the browser's microphone.
+The computer says a word and a short example sentence. You spell the word by typing it.
 
 Sample sentences are written once, at build time, and saved into the game. The published site does not call OpenAI and does not need an API key.
 
@@ -17,9 +17,7 @@ Open the local URL Vite prints. `npm run build` writes a static site to `dist/`.
 
 `npm run publish:pages` builds the quiz and copies it into the local `patrickread.github.io` repo at `spelling-quiz/`. It also adds a Spelling Quiz link on that site's home page if the link is missing. Commit and push that repo to publish. The Pages repo path defaults to `../patrickread.github.io`; set `PAGES_REPO` to use a different checkout.
 
-Dictation uses the Web Speech API. Chrome, Edge, and Safari can listen through the microphone. Typing works even when dictation does not. Hearing the word uses the browser's speech synthesis, in place of macOS `say`.
-
-On Chrome, dictation sends microphone audio to the browser's speech service. Typing never leaves the page.
+Hearing the word uses the browser's speech synthesis, in place of macOS `say`. The answer is typed, so the spelling is what gets checked.
 
 ## Sentences
 
