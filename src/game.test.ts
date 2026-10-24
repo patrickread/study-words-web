@@ -173,10 +173,10 @@ describe("spoken lines", () => {
     assert.equal(promptLine("Ada", "See", null), "Ada, your word is See.");
   });
 
-  it("matches the desktop praise, miss, and gibberish lines", () => {
+  it("praises a correct spelling without the player's name", () => {
     assert.equal(
       resultLine("Ada", { type: "correct", attempt: "cat", word: "cat", affirmation: "Hooray!" }, "wrote"),
-      "Ada, you wrote cat. That is correct! Hooray!",
+      "You wrote cat. That is correct! Hooray!",
     );
     assert.equal(
       resultLine("Ada", { type: "incorrect", attempt: "dog", switched: false }, "said"),

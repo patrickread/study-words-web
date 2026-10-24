@@ -35,4 +35,4 @@ Word lists live in `data/words.txt` and `data/words-addie-d1.txt`. Add a word th
 
 ## Round rules
 
-A round is 10 words. Two misses in a row switch to a different word, and the missed word stays in the pile. Gibberish, including spaces and punctuation, does not count as a miss. `?` repeats the word. After a correct spelling, Enter goes to the next word.
+A round is 10 words. Two misses in a row switch to a different word, and the missed word stays in the pile. Gibberish, including spaces and punctuation, does not count as a miss. `?` repeats the word. After a correct spelling, the quiz waits until Enter or Next word.

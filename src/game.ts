@@ -188,7 +188,7 @@ export function resultLine(name: string, feedback: Feedback, via: AnswerVia): st
 
   const verb = via === "said" ? "said" : "wrote";
   if (feedback.type === "correct") {
-    return `${name}, you ${verb} ${feedback.attempt}. That is correct! ${finishSentence(feedback.affirmation)}`;
+    return `You ${verb} ${feedback.attempt}. That is correct! ${finishSentence(feedback.affirmation)}`;
   }
 
   const result = `${name}, you ${verb} ${feedback.attempt}. That is not correct.`;

@@ -35,6 +35,11 @@ export function App() {
   const busyRef = useRef(false);
   const sayId = useRef(0);
   const wordInput = useRef<HTMLInputElement>(null);
+  const feedbackRef = useRef<Feedback | null>(null);
+  const advanceRef = useRef(false);
+  const nextWaitRef = useRef<(() => void) | null>(null);
+
+  feedbackRef.current = feedback;
 
   const canSpeak = speechAvailable();
 
@@ -90,6 +95,8 @@ export function App() {
     const attempt = raw.trim();
     const mine = ++turnRef.current;
     busyRef.current = true;
+    advanceRef.current = false;
+    nextWaitRef.current = null;
 
     const affirmation = randomAffirmation();
     const result = submit(current, attempt, affirmation, "wrote");
@@ -105,6 +112,18 @@ export function App() {
       busyRef.current = false;
       return;
     }
+
+    if (result.feedback.type === "correct" && !advanceRef.current) {
+      busyRef.current = false;
+      await new Promise<void>((resolve) => {
+        nextWaitRef.current = () => {
+          nextWaitRef.current = null;
+          resolve();
+        };
+      });
+      if (turnRef.current !== mine) return;
+    }
+    advanceRef.current = false;
 
     if (result.feedback.type === "gibberish" && current.round) {
       showPhase("answer");
@@ -165,6 +184,13 @@ export function App() {
   function onNext() {
     if (phaseRef.current !== "feedback") return;
     stopSpeaking();
+    if (nextWaitRef.current) {
+      const resume = nextWaitRef.current;
+      nextWaitRef.current = null;
+      resume();
+      return;
+    }
+    if (feedbackRef.current?.type === "correct") advanceRef.current = true;
   }
 
   function onNotMe() {
